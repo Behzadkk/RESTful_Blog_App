@@ -95,6 +95,18 @@ app.put("/blogs/:id", function(req, res) {
   });
 });
 
+// DELETE ROUTE
+app.delete("/blogs/:id", function(req, res) {
+  Blog.findByIdAndRemove(req.params.id, function(err) {
+    if (err) {
+      console.log(err);
+      res.redirect("/blogs");
+    } else {
+      res.redirect("/blogs");
+    }
+  });
+});
+
 app.listen(PORT, function() {
   console.log("SERVER IS RUNNING AT PORT " + PORT);
 });
